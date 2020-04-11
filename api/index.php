@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization');
+header("Access-Control-Allow-Origin: *");
 
 // comment out the following two lines when deployed to production
 defined('YII_DEBUG') or define('YII_DEBUG', true);

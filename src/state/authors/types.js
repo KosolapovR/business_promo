@@ -1,0 +1,10 @@
+const FETCH_AUTHORS = 'authors/FETCH_AUTHORS';
+const START_FETCHING = 'authors/START_FETCHING';
+const END_FETCHING = 'authors/END_FETCHING';
+
+
+export {
+    FETCH_AUTHORS,
+    START_FETCHING,
+    END_FETCHING
+}
