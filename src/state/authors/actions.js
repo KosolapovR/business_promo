@@ -1,8 +1,13 @@
-import {END_FETCHING, FETCH_AUTHORS, START_FETCHING} from "./types";
+import {END_FETCHING, FETCH_AUTHORS, FETCH_ONE_AUTHOR, START_FETCHING} from "./types";
 
 const fetchAuthorsAC = payload => ({
    type: FETCH_AUTHORS,
    payload
+});
+
+const fetchOneAuthorAC = payload => ({
+    type: FETCH_ONE_AUTHOR,
+    payload
 });
 
 const startFetchingAC = () => ({
@@ -15,6 +20,7 @@ const endFetchingAC = () => ({
 
 export {
     fetchAuthorsAC,
+    fetchOneAuthorAC,
     startFetchingAC,
     endFetchingAC
 }

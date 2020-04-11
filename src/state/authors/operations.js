@@ -1,4 +1,4 @@
-import {endFetchingAC, fetchAuthorsAC, startFetchingAC} from "./actions";
+import {endFetchingAC, fetchAuthorsAC, fetchOneAuthorAC, startFetchingAC} from "./actions";
 import  axios from "axios";
 
 const fetchAuthors = page => {
@@ -16,6 +16,22 @@ const fetchAuthors = page => {
     }
 };
 
+const fetchAuthor = id => {
+
+    return dispatch => {
+        dispatch(startFetchingAC());
+        axios
+            .get(`http://businesspromo/api/authors/${id}`)
+            .then(response => {
+                dispatch(fetchOneAuthorAC(response.data))
+            })
+            .finally(() => {
+                dispatch(endFetchingAC());
+            })
+    }
+};
+
 export {
-    fetchAuthors
+    fetchAuthors,
+    fetchAuthor,
 }

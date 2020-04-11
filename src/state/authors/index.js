@@ -1,8 +1,9 @@
 import {default as author} from './reducer';
-import {fetchAuthors} from "./operations";
+import {fetchAuthors, fetchAuthor} from "./operations";
 
 export {
-    fetchAuthors
+    fetchAuthors,
+    fetchAuthor,
 }
 
 export default author;

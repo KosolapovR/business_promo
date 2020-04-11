@@ -1,10 +1,12 @@
 const FETCH_AUTHORS = 'authors/FETCH_AUTHORS';
+const FETCH_ONE_AUTHOR = 'authors/FETCH_ONE_AUTHOR';
 const START_FETCHING = 'authors/START_FETCHING';
 const END_FETCHING = 'authors/END_FETCHING';
 
 
 export {
     FETCH_AUTHORS,
+    FETCH_ONE_AUTHOR,
     START_FETCHING,
     END_FETCHING
 }

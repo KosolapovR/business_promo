@@ -1,0 +1,12 @@
+const FETCH_BOOKS = 'authors/FETCH_BOOKS';
+const FETCH_ONE_BOOK = 'authors/FETCH_ONE_BOOK';
+const START_FETCHING = 'authors/START_FETCHING';
+const END_FETCHING = 'authors/END_FETCHING';
+
+
+export {
+    FETCH_BOOKS,
+    FETCH_ONE_BOOK,
+    START_FETCHING,
+    END_FETCHING
+}

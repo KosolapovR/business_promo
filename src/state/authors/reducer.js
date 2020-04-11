@@ -1,15 +1,17 @@
-import {END_FETCHING, FETCH_AUTHORS, START_FETCHING} from "./types";
+import {END_FETCHING, FETCH_AUTHORS, FETCH_ONE_AUTHOR, START_FETCHING} from "./types";
 
 const initialState = {
     isFetching: false,
-    authors: [],
+    currentPage: 0
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_AUTHORS: {
-            debugger;
             return {...state, authors: action.payload}
+        }
+        case FETCH_ONE_AUTHOR: {
+            return {...state, author: action.payload}
         }
         case START_FETCHING: {
             return {...state, isFetching: true}

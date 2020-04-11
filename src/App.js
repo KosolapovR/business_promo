@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import AuthorsPage from "./views/authorsPage/AuthorsPage";
+import Layout from "./views/Layout";
 
 function App() {
     return (
         <div className="App">
-            Authors and Books
-            <AuthorsPage/>
+            <Layout/>
         </div>
     );
 }
