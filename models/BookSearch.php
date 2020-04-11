@@ -45,8 +45,12 @@ class BookSearch extends Book
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+                            'query' => $query,
+                                         'pagination' => [
+                                             'pageSize' => 10,
+                                             'page' => \Yii::$app->request->get('page')
+                                         ]
+                        ]);
 
         $this->load($params);
 

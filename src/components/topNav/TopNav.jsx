@@ -116,6 +116,12 @@ const TopNav = () => {
                             </ListItem>
                             <Divider orientation='vertical' flexItem/>
                             <ListItem button>
+                                <Link to="/authors/create">
+                                    <ListItemText primary="Добавить автора"/>
+                                </Link>
+                            </ListItem>
+                            <Divider orientation='vertical' flexItem/>
+                            <ListItem button>
                                 <Link to="/books">
                                     <ListItemText primary="Книги"/>
                                 </Link>

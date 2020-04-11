@@ -1,12 +1,21 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {fetchBooks} from "../../state/books";
+import {changePage, fetchBooks} from "../../state/books";
 import {Link} from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
-function BooksPage({books, fetchBooks, page}) {
+function BooksPage({books, fetchBooks, page, changePage}) {
     useEffect(()=>{
         fetchBooks(page);
-    }, []);
+    }, [page]);
+
+    const handleMoreAuthors = () => {
+        changePage(++page);
+    };
+
+    const handleLessAuthors = () => {
+        changePage(--page);
+    };
 
     return (
         <div>
@@ -20,6 +29,20 @@ function BooksPage({books, fetchBooks, page}) {
                     </li>
                 )}
             </ul>
+            <Button
+                color='secondary'
+                variant='outlined'
+                onClick={handleLessAuthors}
+            >
+                Меньше
+            </Button>
+            <Button
+                color='secondary'
+                variant='outlined'
+                onClick={handleMoreAuthors}
+            >
+                Больше
+            </Button>
         </div>
 
     );
@@ -30,4 +53,4 @@ const mapStateToProps = state => ({
     page: state.books.currentPage
 });
 
-export default connect(mapStateToProps, {fetchBooks})(BooksPage);
+export default connect(mapStateToProps, {fetchBooks, changePage})(BooksPage);

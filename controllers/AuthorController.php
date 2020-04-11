@@ -11,7 +11,7 @@ use yii\data\ActiveDataProvider;
 class AuthorController extends ActiveController
 {
     public $modelClass = 'app\models\Author';
-    public $enableCsrfValidation = false;
+
     public function actions()
     {
         $actions = parent::actions();
