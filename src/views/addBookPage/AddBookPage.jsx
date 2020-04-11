@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import AddForm from "../../components/addForm/AddForm";
 
-function AddAuthorPage() {
+function AddBookPage() {
 
     const handleSubmit = (value) => {
         console.log('Submitted ', value)
@@ -10,11 +10,11 @@ function AddAuthorPage() {
 
     return (
         <div>
-            Add Author
+            Add Book
             <AddForm
                 onSubmit={handleSubmit}
-                nameLabel="Фамилия/псевдоним"
-                yearLabel="Год рождения"
+                nameLabel="Наименование"
+                yearLabel="Год"
             />
         </div>
 
@@ -25,4 +25,4 @@ const mapStateToProps = state => ({
     author: state.authors.author
 });
 
-export default connect(mapStateToProps, {})(AddAuthorPage);
+export default connect(mapStateToProps, {})(AddBookPage);

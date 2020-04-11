@@ -1,3 +1,3 @@
-import {default as AddAuthorPage} from "./AddAuthorPage";
+import {default as AddBookPage} from "./AddBookPage";
 
-export default AddAuthorPage;
+export default AddBookPage;

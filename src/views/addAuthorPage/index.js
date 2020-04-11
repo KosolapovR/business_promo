@@ -1,3 +1,3 @@
-import {default as OneAuthorPage} from "./OneAuthorPage";
+import {default as AddAuthorPage} from "./AddAuthorPage";
 
-export default OneAuthorPage;
+export default AddAuthorPage;

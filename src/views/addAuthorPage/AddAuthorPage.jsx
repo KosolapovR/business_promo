@@ -1,21 +1,21 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
-import {useParams} from "react-router-dom";
-import {fetchAuthor} from "../../state/authors";
+import AddForm from "../../components/addForm/AddForm";
 
-function OneAuthorPage({author, fetchAuthor}) {
+function AddAuthorPage() {
 
-    let {id} = useParams();
-
-    useEffect(() => {
-        fetchAuthor(id);
-    }, []);
+    const handleSubmit = (value) => {
+        console.log('Submitted ', value)
+    }
 
     return (
         <div>
-            OneAuthorPage
-            {author && author.id == id && <div>Имя: {author.name}</div>}
-            {author && author.id == id && <div>Год рождения: {author.birth}</div>}
+            Add Author
+            <AddForm
+                onSubmit={handleSubmit}
+                nameLabel="Фамилия/псевдоним"
+                yearLabel="Год"
+            />
         </div>
 
     );
@@ -25,4 +25,4 @@ const mapStateToProps = state => ({
     author: state.authors.author
 });
 
-export default connect(mapStateToProps, {fetchAuthor})(OneAuthorPage);
+export default connect(mapStateToProps, {})(AddAuthorPage);
