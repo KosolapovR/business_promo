@@ -6,6 +6,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Button from "@material-ui/core/Button";
+import {maxLength20, required} from "../../utils/formValidator";
 
 const renderTextField = ({
                              label,
@@ -63,6 +64,8 @@ const renderSelectField = ({
     <FormControl error={touched && error}>
         <InputLabel htmlFor="age-native-simple">Рейтинг</InputLabel>
         <Select
+            style={{width: '150px'}}
+            required
             native
             {...input}
             {...custom}
@@ -81,14 +84,15 @@ function AddForm(props) {
     const {handleSubmit, pristine, reset, submitting, nameLabel, yearLabel} = props;
     return (
         <form onSubmit={handleSubmit}>
-            <Field name="name" component={renderTextField} label={nameLabel}/>
-            <Field name="year" component={renderNumberField} label={yearLabel}/>
-            <Field name="rank" component={renderSelectField} label="Рейтинг">
-                <option value={"1"}>1</option>
-                <option value={"2"}>2</option>
-                <option value={"3"}>3</option>
-                <option value={"4"}>4</option>
+            <Field name="name" component={renderTextField} validate={[required, maxLength20]} label={nameLabel}/>
+            <Field name="year" component={renderNumberField} validate={[required]} label={yearLabel}/>
+            <Field name="rank" component={renderSelectField} validate={[required]} label="Рейтинг" >
+                <option value={null}>{null}</option>
                 <option value={"5"}>5</option>
+                <option value={"4"}>4</option>
+                <option value={"3"}>3</option>
+                <option value={"2"}>2</option>
+                <option value={"1"}>1</option>
             </Field>
             <Button type="submit" color='primary' variant='contained' disabled={pristine || submitting}>
                 Submit

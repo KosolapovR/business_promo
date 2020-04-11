@@ -11,7 +11,7 @@ class BookController extends ActiveController
 {
     public $modelClass = 'app\models\Book';
 
-    public $reservedParams = ['sort','q'];
+    public $reservedParams = ['sort','q', 'page'];
 
     public function actions() {
         $actions = parent::actions();

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {fetchAuthor} from "../../state/authors";
 
 function OneAuthorPage({author, fetchAuthor}) {
@@ -14,8 +14,11 @@ function OneAuthorPage({author, fetchAuthor}) {
     return (
         <div>
             OneAuthorPage
+            {author && author.id == id && <Link to={`/authors/${author.id}/update`}>Редактировать</Link>}
             {author && author.id == id && <div>Имя: {author.name}</div>}
             {author && author.id == id && <div>Год рождения: {author.birth}</div>}
+            {author && author.id == id && <Link to={`/authors/${author.id}/books`}>Книги</Link>}
+            {author && author.id == id && <Link to={`/authors/${author.id}/createBook`}>Добавить книгу</Link>}
         </div>
 
     );

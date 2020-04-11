@@ -1,4 +1,12 @@
-import {END_FETCHING, FETCH_BOOKS, FETCH_ONE_BOOK, START_FETCHING} from "./types";
+import {
+    CHANGE_PAGE,
+    CREATE_BOOK,
+    END_FETCHING,
+    FETCH_BOOKS,
+    FETCH_ONE_BOOK,
+    START_FETCHING,
+    UPDATE_BOOK
+} from "./types";
 
 const initialState = {
     isFetching: false,
@@ -18,6 +26,15 @@ const reducer = (state = initialState, action) => {
         }
         case END_FETCHING: {
             return {...state, isFetching: false}
+        }
+        case CREATE_BOOK: {
+            return {...state, createdBook: action.payload}
+        }
+        case UPDATE_BOOK: {
+            return {...state, updatedBook: action.payload}
+        }
+        case CHANGE_PAGE: {
+            return {...state, currentPage: action.payload}
         }
         default: {
             return state

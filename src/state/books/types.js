@@ -1,12 +1,17 @@
-const FETCH_BOOKS = 'authors/FETCH_BOOKS';
-const FETCH_ONE_BOOK = 'authors/FETCH_ONE_BOOK';
-const START_FETCHING = 'authors/START_FETCHING';
-const END_FETCHING = 'authors/END_FETCHING';
-
+const FETCH_BOOKS = 'books/FETCH_BOOKS';
+const FETCH_ONE_BOOK = 'books/FETCH_ONE_BOOK';
+const START_FETCHING = 'books/START_FETCHING';
+const END_FETCHING = 'books/END_FETCHING';
+const CREATE_BOOK = 'books/CREATE_BOOK';
+const CHANGE_PAGE = 'books/CHANGE_PAGE';
+const UPDATE_BOOK = 'books/UPDATE_BOOK';
 
 export {
     FETCH_BOOKS,
     FETCH_ONE_BOOK,
+    CREATE_BOOK,
+    UPDATE_BOOK,
+    CHANGE_PAGE,
     START_FETCHING,
     END_FETCHING
 }

@@ -8,6 +8,9 @@ import OneBookPage from "./oneBookPage/OneBookPage";
 import OneAuthorPage from "./oneAuthorPage/OneAuthorPage";
 import AddAuthorPage from "./addAuthorPage";
 import AddBookPage from "./addBookPage/AddBookPage";
+import AuthorBooksPage from "./authorBooksPage/AuthorBooksPage";
+import UpdateAuthorPage from "./updateAuthorPage/UpdateAuthorPage";
+import UpdateBookPage from "./updateBookPage/UpdateBookPage";
 
 function Layout() {
     return (
@@ -17,9 +20,12 @@ function Layout() {
                 maxWidth='lg'>
                 <Switch>
                     <Route exact path={'/authors/create'}><AddAuthorPage/></Route>
+                    <Route exact path={'/authors/:id/update'}><UpdateAuthorPage/></Route>
+                    <Route exact path={'/authors/:id/createBook'}><AddBookPage/></Route>
+                    <Route exact path={'/authors/:id/books'}><AuthorBooksPage/></Route>
                     <Route path={'/authors/:id'}><OneAuthorPage/></Route>
                     <Route exact path={'/authors'}><AuthorsPage/></Route>
-                    <Route exact path={'/books/create'}><AddBookPage/></Route>
+                    <Route exact path={'/books/:id/update'}><UpdateBookPage/></Route>
                     <Route exact path={'/books/:id'}><OneBookPage/></Route>
                     <Route exact path={'/books'}><BooksPage/></Route>
                     <Route path={'/'}>< AuthorsPage/></Route>
