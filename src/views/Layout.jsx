@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import AuthorsPage from './authorsPage'
 import Container from "@material-ui/core/Container";
 import TopNav from "../components/topNav";
@@ -11,10 +11,22 @@ import AddBookPage from "./addBookPage/AddBookPage";
 import AuthorBooksPage from "./authorBooksPage/AuthorBooksPage";
 import UpdateAuthorPage from "./updateAuthorPage/UpdateAuthorPage";
 import UpdateBookPage from "./updateBookPage/UpdateBookPage";
+import {makeStyles} from "@material-ui/core/styles";
+import Widget from "../components/widget";
+
+const useStyles = makeStyles({
+    root: {
+        minHeight: '100vh',
+        position: 'relative',
+    }
+});
 
 function Layout() {
+
+    const classes = useStyles();
+
     return (
-        <>
+        <div className={classes.root}>
             <TopNav/>
             <Container
                 maxWidth='lg'>
@@ -31,7 +43,8 @@ function Layout() {
                     <Route path={'/'}>< AuthorsPage/></Route>
                 </Switch>
             </Container>
-        </>
+            <Widget/>
+        </div>
     );
 }
 

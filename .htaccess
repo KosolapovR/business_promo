@@ -1,1 +1,1 @@
-Header set Access-Control-Expose-Headers "X-Pagination-Current-Page, X-Pagination-Total-Count"
+Header set Access-Control-Expose-Headers "X-Pagination-Current-Page, X-Pagination-Total-Count, X-Pagination-Page-Count"

@@ -1,17 +1,15 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {changePage, fetchAuthors} from "../../state/authors";
-import {Link} from "react-router-dom";
-import Button from "@material-ui/core/Button";
 import EnhancedTable from "../../components/table";
 
-function AuthorsPage({authors, fetchAuthors, page, changePage}) {
+function AuthorsPage({authors, deletedAuthor, fetchAuthors, page, changePage}) {
     useEffect(() => {
         fetchAuthors(page);
-    }, [page, authors]);
+    }, [page, deletedAuthor]);
 
     const handleChangePage = (event, newPage) => {
-       changePage(newPage);
+        changePage(newPage);
     };
 
 
@@ -37,6 +35,7 @@ function AuthorsPage({authors, fetchAuthors, page, changePage}) {
 
 const mapStateToProps = state => ({
     authors: state.authors.authors,
+    deletedAuthor: state.authors.deletedAuthor,
     page: state.authors.currentPage
 });
 

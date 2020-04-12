@@ -14,12 +14,12 @@ function Stars({rank}) {
                 .fill('0')
                 .map((el, i) =>
                     parseInt(rank) <= i ?
-                        <Grid item>
+                        <Grid key={i} item>
                             <Icon color='secondary'>
                                 <StarBorderIcon/>
                             </Icon>
                         </Grid> :
-                        <Grid item>
+                        <Grid key={i} item>
                             <Icon color='secondary'>
                                 <StarIcon/>
                             </Icon>

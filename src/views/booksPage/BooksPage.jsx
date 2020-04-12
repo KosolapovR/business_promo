@@ -3,15 +3,14 @@ import {connect} from "react-redux";
 import {changePage, fetchBooks} from "../../state/books";
 import EnhancedTable from "../../components/table";
 
-function BooksPage({books, fetchBooks, page, changePage}) {
+function BooksPage({books, deletedBook, fetchBooks, page, changePage}) {
     useEffect(() => {
         fetchBooks(page);
-    }, [page, books]);
+    }, [page, deletedBook]);
 
     const handleChangePage = (e, newPage) => {
         changePage(newPage);
     };
-
 
     return (
         <div>
@@ -28,11 +27,11 @@ function BooksPage({books, fetchBooks, page, changePage}) {
                 }}
             />}
         </div>
-
     );
 }
 
 const mapStateToProps = state => ({
+    deletedBook: state.books.deletedBook,
     books: state.books.books,
     page: state.books.currentPage
 });

@@ -29,14 +29,13 @@ const fetchBook = id => {
     return dispatch => {
         dispatch(startFetchingAC());
         let result;
-        const bookPromise = axios.get(`http://businesspromo/api/books/${id}`)
+        axios.get(`http://businesspromo/api/books/${id}`)
             .then(response => {
                 result = response;
                 axios
                     .get(`http://businesspromo/api/authors/${response.data.author_id}`)
                     .then(
                     response => {
-                        debugger;
                         dispatch(fetchOneBookAC({...result.data, authorName: response.data.name, authorId: response.data.id}))
                     }
                 );
@@ -52,7 +51,6 @@ const createBook = ({name, year, rank, author_id}) => {
         axios
             .post('http://businesspromo/api/books', {name, year, rank, author_id})
             .then(response => {
-                debugger;
                 if(response.status === 201){
                     dispatch(createBookAC(response.data));
                 }
@@ -80,6 +78,7 @@ const deleteBook = (idArray) => {
                 .then(response => {
                     if (response.status === 204) {
                         dispatch(deleteBookAC(response.request.responseURL));
+                        fetchBooks(0);
                     }
                 })
         });

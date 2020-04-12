@@ -36,7 +36,7 @@ function OneAuthorPage({author, fetchAuthor}) {
 
     useEffect(() => {
         fetchAuthor(id);
-    }, []);
+    }, [id]);
 
     if (author && author.id == id) {
         return (

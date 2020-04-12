@@ -16,7 +16,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import {Link} from "react-router-dom";
 import Stars from "../stars";
 import {connect} from "react-redux";
@@ -61,12 +60,6 @@ function EnhancedTableHead(props) {
         <TableHead>
             <TableRow>
                 <TableCell padding="checkbox">
-                    {/*                 <Checkbox
-                        indeterminate={numSelected > 0 && numSelected < rowCount}
-                        checked={rowCount > 0 && numSelected === rowCount}
-                        onChange={onSelectAllClick}
-                        inputProps={{'aria-label': 'select all desserts'}}
-                    />*/}
                 </TableCell>
                 {headCells.map((headCell) => (
                     <TableCell
@@ -232,9 +225,9 @@ const EnhancedTable = (props) => {
 
     const handleDelete = () => {
         if (title.toString() === 'Aвторы') {
-            deleteAuthor(selected)
+            deleteAuthor(selected);
         } else if (title.toString() === 'Книги') {
-            deleteBook(selected)
+            deleteBook(selected);
         }
     };
 
@@ -309,7 +302,7 @@ const EnhancedTable = (props) => {
                 <TablePagination
                     rowsPerPageOptions={[10]}
                     component="div"
-                    count={totalCount}
+                    count={parseInt(totalCount)}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={handleChangePage}
