@@ -28,7 +28,7 @@ function UpdateBookPage({book, updateBook, updatedBook}) {
 
     let initialValue = {name: '', year: '', rank: ''};
 
-    if(book) initialValue = {...initialValue, name: book.name, year: book.year, rank: book.rank};
+    if (book) initialValue = {...initialValue, name: book.name, year: book.year, rank: book.rank};
 
     return (
         <div>

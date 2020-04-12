@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import AuthorsPage from './authorsPage'
 import Container from "@material-ui/core/Container";
 import TopNav from "../components/topNav";

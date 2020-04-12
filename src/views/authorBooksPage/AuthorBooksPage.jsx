@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import {Tooltip} from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
 import PersonIcon from "@material-ui/icons/Person";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";

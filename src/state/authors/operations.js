@@ -5,7 +5,9 @@ import {
     fetchAuthorsAC,
     fetchOneAuthorAC,
     startFetchingAC,
-    fetchAuthorBooksAC, updateAuthorAC, deleteAuthorAC
+    fetchAuthorBooksAC,
+    updateAuthorAC,
+    deleteAuthorAC
 } from "./actions";
 import axios from "axios";
 import {deleteBookAC} from "../books/actions";

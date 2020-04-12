@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 function AddBookPage({createBook, createdBook, resetForm}) {
 
     const classes = useStyles();
-
     const [showAlert, setShowAlert] = useState(false);
 
     const {id} = useParams();
@@ -64,4 +63,5 @@ function mapDispatchToProps(dispatch) {
         resetForm: () => dispatch(reset('addForm')),
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(AddBookPage);

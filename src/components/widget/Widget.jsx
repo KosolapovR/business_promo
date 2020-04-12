@@ -17,6 +17,7 @@ import {Link} from "react-router-dom";
 const useStyles = makeStyles(theme => ({
     root: {
         width: '300px',
+        maxHeight: '393px',
         position: 'fixed',
         bottom: 0,
         left: 0,

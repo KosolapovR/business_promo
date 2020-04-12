@@ -89,7 +89,7 @@ const renderSelectField = ({
                                children,
                                ...custom
                            }) => (
-    <FormControl error={touched && error}>
+    <FormControl error={touched && Boolean(error)}>
         <InputLabel htmlFor="age-native-simple">Рейтинг</InputLabel>
         <Select
             className={classes.field}
