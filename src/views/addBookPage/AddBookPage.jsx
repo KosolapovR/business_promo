@@ -6,8 +6,21 @@ import {createBook} from "../../state/books";
 import {createAuthor} from "../../state/authors";
 import {reset} from "redux-form";
 import TransitionAlert from "../../components/transitionAlert";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    title: {
+        width: 'max-content',
+        padding: '10px',
+        marginTop: '10px'
+    }
+});
 
 function AddBookPage({createBook, createdBook, resetForm}) {
+
+    const classes = useStyles();
 
     const [showAlert, setShowAlert] = useState(false);
 
@@ -22,6 +35,11 @@ function AddBookPage({createBook, createdBook, resetForm}) {
     return (
         <div>
             {createdBook && <TransitionAlert type="книга" author={createdBook} show={showAlert}/>}
+            <Paper className={classes.title}>
+                <Typography>
+                    Добавление новой книги
+                </Typography>
+            </Paper>
             {isNaN(id) ?
                 <Redirect to={"/"}/> :
                 < AddForm

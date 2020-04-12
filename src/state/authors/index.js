@@ -1,10 +1,11 @@
 import {default as author} from './reducer';
-import {fetchAuthors, fetchAuthor, updateAuthor, createAuthor, changePage, fetchAuthorBooks} from "./operations";
+import {fetchAuthors, fetchAuthor, updateAuthor, createAuthor, deleteAuthor, changePage, fetchAuthorBooks} from "./operations";
 
 export {
     fetchAuthors,
     fetchAuthor,
     createAuthor,
+    deleteAuthor,
     updateAuthor,
     changePage,
     fetchAuthorBooks

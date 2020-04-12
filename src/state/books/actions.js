@@ -1,6 +1,6 @@
 import {
     CHANGE_PAGE,
-    CREATE_BOOK,
+    CREATE_BOOK, DELETE_BOOK,
     END_FETCHING,
     FETCH_BOOKS,
     FETCH_ONE_BOOK,
@@ -28,6 +28,11 @@ const updateBookAC = payload => ({
     payload
 });
 
+const deleteBookAC = payload => ({
+    type: DELETE_BOOK,
+    payload
+});
+
 const changePageAC = payload => ({
     type: CHANGE_PAGE,
     payload
@@ -46,6 +51,7 @@ export {
     fetchOneBookAC,
     changePageAC,
     updateBookAC,
+    deleteBookAC,
     createBookAC,
     startFetchingAC,
     endFetchingAC

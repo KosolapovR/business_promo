@@ -1,6 +1,6 @@
 import {
     CHANGE_PAGE,
-    CREATE_AUTHOR,
+    CREATE_AUTHOR, DELETE_AUTHOR,
     END_FETCHING,
     FETCH_AUTHOR_BOOKS,
     FETCH_AUTHORS,
@@ -35,6 +35,9 @@ const reducer = (state = initialState, action) => {
         }
         case UPDATE_AUTHOR: {
             return {...state, updatedAuthor: action.payload}
+        }
+        case DELETE_AUTHOR: {
+            return {...state, deletedAuthor: action.payload}
         }
         case CHANGE_PAGE: {
             return {...state, currentPage: action.payload}

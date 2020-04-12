@@ -3,8 +3,21 @@ import {connect} from "react-redux";
 import AddForm from "../../components/addForm/AddForm";
 import {updateAuthor} from "../../state/authors";
 import TransitionAlert from "../../components/transitionAlert";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    title: {
+        width: 'max-content',
+        padding: '10px',
+        marginTop: '10px'
+    }
+});
 
 function UpdateAuthorPage({author, updateAuthor, updatedAuthor}) {
+
+    const classes = useStyles();
 
     const [showAlert, setShowAlert] = useState(false);
 
@@ -25,8 +38,13 @@ function UpdateAuthorPage({author, updateAuthor, updatedAuthor}) {
                 author={updatedAuthor}
                 show={showAlert}/>
             }
-            Update Author
+            <Paper className={classes.title}>
+                <Typography>
+                    Редактирование автора
+                </Typography>
+            </Paper>
             <AddForm
+                type='update'
                 initialValues={initialValue}
                 onSubmit={handleSubmit}
                 nameLabel="Фамилия/псевдоним"

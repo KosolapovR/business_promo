@@ -1,48 +1,32 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {changePage, fetchBooks} from "../../state/books";
-import {Link} from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import EnhancedTable from "../../components/table";
 
 function BooksPage({books, fetchBooks, page, changePage}) {
-    useEffect(()=>{
+    useEffect(() => {
         fetchBooks(page);
-    }, [page]);
+    }, [page, books]);
 
-    const handleMoreAuthors = () => {
-        changePage(++page);
+    const handleChangePage = (e, newPage) => {
+        changePage(newPage);
     };
 
-    const handleLessAuthors = () => {
-        changePage(--page);
-    };
 
     return (
         <div>
-            BooksPage
-            <ul>
-                {books && books.map(b =>
-                    <li key={b.id}>
-                        <span>{b.name}</span>
-                        <span>{b.year}</span>
-                        <Link to={`/books/${b.id}`}>Ссылка</Link>
-                    </li>
-                )}
-            </ul>
-            <Button
-                color='secondary'
-                variant='outlined'
-                onClick={handleLessAuthors}
-            >
-                Меньше
-            </Button>
-            <Button
-                color='secondary'
-                variant='outlined'
-                onClick={handleMoreAuthors}
-            >
-                Больше
-            </Button>
+            {books && <EnhancedTable
+                title='Книги'
+                rows={books.items}
+                handleChangePage={handleChangePage}
+                totalCount={books.totalCount}
+                selectedItems={[]}
+                page={page}
+                columns={{
+                    first: 'Название',
+                    second: 'Год публикации',
+                }}
+            />}
         </div>
 
     );

@@ -5,9 +5,10 @@ import {
     fetchAuthorsAC,
     fetchOneAuthorAC,
     startFetchingAC,
-    fetchAuthorBooksAC, updateAuthorAC
+    fetchAuthorBooksAC, updateAuthorAC, deleteAuthorAC
 } from "./actions";
 import axios from "axios";
+import {deleteBookAC} from "../books/actions";
 
 const fetchAuthors = page => {
 
@@ -16,7 +17,11 @@ const fetchAuthors = page => {
         axios
             .get(`http://businesspromo/api/authors?page=${page}&sort=-rank`)
             .then(response => {
-                dispatch(fetchAuthorsAC(response.data))
+                response.data.forEach(el => el.year = el.birth);
+                dispatch(fetchAuthorsAC({
+                    items: response.data,
+                    totalCount: response.headers['x-pagination-total-count']
+                }))
             })
             .finally(() => {
                 dispatch(endFetchingAC());
@@ -81,6 +86,21 @@ const updateAuthor = ({name, year, rank, id}) => {
     }
 };
 
+const deleteAuthor = (idArray) => {
+    return dispatch => {
+        idArray.forEach(id => {
+            axios
+                .delete(`http://businesspromo/api/authors/${id}`)
+                .then(response => {
+                    if (response.status === 204) {
+                        dispatch(deleteAuthorAC(response.request.responseURL));
+                    }
+                })
+        });
+
+    }
+};
+
 const changePage = (page) => {
     return dispatch => {
         dispatch(changePageAC(page));
@@ -92,6 +112,7 @@ export {
     fetchAuthor,
     fetchAuthorBooks,
     createAuthor,
+    deleteAuthor,
     updateAuthor,
     changePage
 }

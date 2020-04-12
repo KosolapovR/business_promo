@@ -6,6 +6,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
 import {Link} from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import MoreIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -34,6 +36,10 @@ const useStyles = makeStyles(theme => ({
             display: 'none',
         },
     },
+    link: {
+        color: '#FFFFFF',
+        textDecoration: 'none',
+    }
 }));
 
 const TopNav = () => {
@@ -43,12 +49,7 @@ const TopNav = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
-    const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    const handleProfileMenuOpen = event => {
-        setAnchorEl(event.currentTarget);
-    };
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -63,22 +64,6 @@ const TopNav = () => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const menuId = 'primary-account-menu';
-
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-            id={menuId}
-            keepMounted
-            transformOrigin={{vertical: 'top', horizontal: 'right'}}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem>Выйти из приложения</MenuItem>
-        </Menu>
-    );
-
     const mobileMenuId = 'primary-account-menu-mobile';
 
     const renderMobileMenu = (
@@ -91,7 +76,15 @@ const TopNav = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>Выйти из приложения</MenuItem>
+            <MenuItem>
+                <Link to={'/authors'} onClick={handleMenuClose}>Авторы</Link>
+            </MenuItem>
+            <MenuItem>
+                <Link to={'/authors/create'} onClick={handleMenuClose}>Добавить автора</Link>
+            </MenuItem>
+            <MenuItem>
+                <Link to={'/books'} onClick={handleMenuClose}>Книги</Link>
+            </MenuItem>
         </Menu>
     );
 
@@ -105,37 +98,39 @@ const TopNav = () => {
                             variant="h6"
                             noWrap
                         >
-                            MY FIRST WS CHAT
+                            БИБЛИОТЕКА
                         </Typography>
                         <div className={classes.grow}/>
                         <List component="nav" className={classes.sectionDesktop} aria-label="mailbox folders">
-                            <ListItem button>
-                                <Link to="/authors">
+                            <Link className={classes.link} to="/authors">
+                                <ListItem button>
                                     <ListItemText primary="Авторы"/>
-                                </Link>
-                            </ListItem>
+                                </ListItem>
+                            </Link>
                             <Divider orientation='vertical' flexItem/>
-                            <ListItem button>
-                                <Link to="/authors/create">
+                            <Link className={classes.link} to="/authors/create">
+                                <ListItem button>
                                     <ListItemText primary="Добавить автора"/>
-                                </Link>
-                            </ListItem>
+                                </ListItem>
+                            </Link>
                             <Divider orientation='vertical' flexItem/>
-                            <ListItem button>
-                                <Link to="/books">
+                            <Link className={classes.link} to="/books">
+                                <ListItem button>
+
                                     <ListItemText primary="Книги"/>
-                                </Link>
-                            </ListItem>
+                                </ListItem>
+                            </Link>
                         </List>
 
-                        <div className={classes.sectionMobile}>
-                            Секция моб
+                        <div onClick={handleMobileMenuOpen} className={classes.sectionMobile}>
+                            <IconButton aria-label="display more actions" edge="end" color="inherit">
+                                <MoreIcon />
+                            </IconButton>
                         </div>
                     </Toolbar>
                 </Container>
             </AppBar>
             {renderMobileMenu}
-            {renderMenu}
         </div>
     );
 };

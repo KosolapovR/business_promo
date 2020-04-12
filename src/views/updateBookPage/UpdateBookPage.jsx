@@ -3,9 +3,22 @@ import {connect} from "react-redux";
 import AddForm from "../../components/addForm/AddForm";
 import {updateBook} from "../../state/books";
 import TransitionAlert from "../../components/transitionAlert";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    title: {
+        width: 'max-content',
+        padding: '10px',
+        marginTop: '10px'
+    }
+});
 
 function UpdateBookPage({book, updateBook, updatedBook}) {
-console.log('book', book);
+
+    const classes = useStyles();
+
     const [showAlert, setShowAlert] = useState(false);
 
     const handleSubmit = ({name, year, rank}) => {
@@ -25,8 +38,13 @@ console.log('book', book);
                 author={updatedBook}
                 show={showAlert}/>
             }
-            Update Book
+            <Paper className={classes.title}>
+                <Typography>
+                    Редактирование книги
+                </Typography>
+            </Paper>
             <AddForm
+                type='update'
                 initialValues={initialValue}
                 onSubmit={handleSubmit}
                 nameLabel="Наименование"

@@ -5,12 +5,14 @@ const END_FETCHING = 'books/END_FETCHING';
 const CREATE_BOOK = 'books/CREATE_BOOK';
 const CHANGE_PAGE = 'books/CHANGE_PAGE';
 const UPDATE_BOOK = 'books/UPDATE_BOOK';
+const DELETE_BOOK = 'books/DELETE_BOOK';
 
 export {
     FETCH_BOOKS,
     FETCH_ONE_BOOK,
     CREATE_BOOK,
     UPDATE_BOOK,
+    DELETE_BOOK,
     CHANGE_PAGE,
     START_FETCHING,
     END_FETCHING

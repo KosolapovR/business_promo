@@ -1,10 +1,11 @@
 import {default as book} from './reducer';
-import {fetchBooks, fetchBook, updateBook, changePage, createBook} from "./operations";
+import {fetchBooks, fetchBook, updateBook, deleteBook, changePage, createBook} from "./operations";
 
 export {
     fetchBooks,
     fetchBook,
     updateBook,
+    deleteBook,
     changePage,
     createBook
 }

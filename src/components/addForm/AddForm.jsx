@@ -7,31 +7,58 @@ import Select from "@material-ui/core/Select";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Button from "@material-ui/core/Button";
 import {maxLength20, required} from "../../utils/formValidator";
+import {makeStyles} from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+
+const useStyles = makeStyles({
+    root: {
+        padding: '10px 20px',
+        margin: '40px auto',
+        width: 'max-content'
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        minWidth: '280px',
+        width: '300px',
+    },
+    field: {
+        width: '100%',
+        margin: '8px 0'
+
+    }
+});
 
 const renderTextField = ({
                              label,
                              input,
-                             meta: { touched, invalid, error },
+                             meta: {touched, invalid, error},
+                             classes,
                              ...custom
-                         }) => (
-    <TextField
-        label={label}
-        placeholder={label}
-        error={touched && invalid}
-        helperText={touched && error}
-        {...input}
-        {...custom}
-    />
-);
+                         }) => {
+    return (
+        <TextField
+            className={classes.field}
+            label={label}
+            placeholder={label}
+            error={touched && invalid}
+            helperText={touched && error}
+            {...input}
+            {...custom}
+        />
+    );
+};
 
 const renderNumberField = ({
-                             label,
-                             input,
-                             meta: { touched, invalid, error },
-                             ...custom
-                         }) => (
+                               label,
+                               input,
+                               meta: {touched, invalid, error},
+                               classes,
+                               ...custom
+                           }) => (
     <TextField
         label={label}
+        className={classes.field}
         placeholder={label}
         error={touched && invalid}
         type="number"
@@ -46,7 +73,7 @@ const renderNumberField = ({
     />
 );
 
-const renderFromHelper = ({ touched, error }) => {
+const renderFromHelper = ({touched, error}) => {
     if (!(touched && error)) {
         return
     } else {
@@ -57,14 +84,15 @@ const renderFromHelper = ({ touched, error }) => {
 const renderSelectField = ({
                                input,
                                label,
-                               meta: { touched, error },
+                               classes,
+                               meta: {touched, error},
                                children,
                                ...custom
                            }) => (
     <FormControl error={touched && error}>
         <InputLabel htmlFor="age-native-simple">Рейтинг</InputLabel>
         <Select
-            style={{width: '150px'}}
+            className={classes.field}
             required
             native
             {...input}
@@ -76,28 +104,34 @@ const renderSelectField = ({
         >
             {children}
         </Select>
-        {renderFromHelper({ touched, error })}
+        {renderFromHelper({touched, error})}
     </FormControl>
 )
 
 function AddForm(props) {
-    const {handleSubmit, pristine, reset, submitting, nameLabel, yearLabel} = props;
+    const classes = useStyles();
+    const {handleSubmit, pristine, reset, submitting, nameLabel, yearLabel, type} = props;
     return (
-        <form onSubmit={handleSubmit}>
-            <Field name="name" component={renderTextField} validate={[required, maxLength20]} label={nameLabel}/>
-            <Field name="year" component={renderNumberField} validate={[required]} label={yearLabel}/>
-            <Field name="rank" component={renderSelectField} validate={[required]} label="Рейтинг" >
-                <option value={null}>{null}</option>
-                <option value={"5"}>5</option>
-                <option value={"4"}>4</option>
-                <option value={"3"}>3</option>
-                <option value={"2"}>2</option>
-                <option value={"1"}>1</option>
-            </Field>
-            <Button type="submit" color='primary' variant='contained' disabled={pristine || submitting}>
-                Submit
-            </Button>
-        </form>
+        <Paper className={classes.root}>
+            <form onSubmit={handleSubmit} className={classes.form}>
+                <Field classes={classes} name="name" component={renderTextField} validate={[required, maxLength20]}
+                       label={nameLabel}/>
+                <Field classes={classes} name="year" component={renderNumberField} validate={[required]}
+                       label={yearLabel}/>
+                <Field classes={classes} name="rank" component={renderSelectField} validate={[required]}
+                       label="Рейтинг">
+                    <option value={null}>{null}</option>
+                    <option value={"5"}>5</option>
+                    <option value={"4"}>4</option>
+                    <option value={"3"}>3</option>
+                    <option value={"2"}>2</option>
+                    <option value={"1"}>1</option>
+                </Field>
+                <Button type="submit" color='primary' variant='contained' disabled={pristine || submitting}>
+                    {type === 'update' ? 'Обновить' : 'Добавить'}
+                </Button>
+            </form>
+        </Paper>
     );
 }
 

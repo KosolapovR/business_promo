@@ -1,6 +1,6 @@
 import {
     changePageAC,
-    createBookAC,
+    createBookAC, deleteBookAC,
     endFetchingAC,
     fetchBooksAC,
     fetchOneBookAC,
@@ -16,7 +16,7 @@ const fetchBooks = page => {
         axios
             .get(`http://businesspromo/api/books?page=${page}&sort=-rank`)
             .then(response => {
-                dispatch(fetchBooksAC(response.data))
+                dispatch(fetchBooksAC({items: response.data, totalCount: response.headers['x-pagination-total-count']} ))
             })
             .finally(() => {
                 dispatch(endFetchingAC());
@@ -72,6 +72,21 @@ const updateBook= ({name, year, rank, id}) => {
     }
 };
 
+const deleteBook = (idArray) => {
+    return dispatch => {
+        idArray.forEach(id => {
+            axios
+                .delete(`http://businesspromo/api/books/${id}`)
+                .then(response => {
+                    if (response.status === 204) {
+                        dispatch(deleteBookAC(response.request.responseURL));
+                    }
+                })
+        });
+
+    }
+};
+
 const changePage = (page) => {
     return dispatch => {
         dispatch(changePageAC(page));
@@ -83,5 +98,6 @@ export {
     fetchBooks,
     createBook,
     updateBook,
+    deleteBook,
     changePage
 }
