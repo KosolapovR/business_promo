@@ -9,8 +9,8 @@ import {
 } from "./types";
 
 const fetchBooksAC = payload => ({
-   type: FETCH_BOOKS,
-   payload
+    type: FETCH_BOOKS,
+    payload
 });
 
 const fetchOneBookAC = payload => ({

@@ -9,17 +9,16 @@ import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  title: {
-    width: 'max-content',
-      padding: '10px',
-      marginTop: '10px'
-  }
+    title: {
+        width: 'max-content',
+        padding: '10px',
+        marginTop: '10px'
+    }
 });
 
 function AddAuthorPage({createAuthor, createdAuthor, resetForm}) {
 
     const classes = useStyles();
-
     const [showAlert, setShowAlert] = useState(false);
 
     const handleSubmit = ({name, year, rank}) => {

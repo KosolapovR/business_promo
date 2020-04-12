@@ -116,7 +116,6 @@ const TopNav = () => {
                             <Divider orientation='vertical' flexItem/>
                             <Link className={classes.link} to="/books">
                                 <ListItem button>
-
                                     <ListItemText primary="Книги"/>
                                 </ListItem>
                             </Link>
@@ -124,7 +123,7 @@ const TopNav = () => {
 
                         <div onClick={handleMobileMenuOpen} className={classes.sectionMobile}>
                             <IconButton aria-label="display more actions" edge="end" color="inherit">
-                                <MoreIcon />
+                                <MoreIcon/>
                             </IconButton>
                         </div>
                     </Toolbar>

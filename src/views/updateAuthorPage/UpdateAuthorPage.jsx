@@ -28,7 +28,7 @@ function UpdateAuthorPage({author, updateAuthor, updatedAuthor}) {
 
     let initialValue = {name: '', year: '', rank: ''};
 
-    if(author) initialValue = {...initialValue, name: author.name, year: author.birth, rank: author.rank};
+    if (author) initialValue = {...initialValue, name: author.name, year: author.birth, rank: author.rank};
 
     return (
         <div>
