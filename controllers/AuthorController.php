@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\models\Author;
 use Yii;
-use yii\data\Pagination;
 use yii\rest\ActiveController;
 use yii\data\ActiveDataProvider;
 
@@ -16,7 +15,6 @@ class AuthorController extends ActiveController
     {
         $actions = parent::actions();
 
-        // customize the data provider preparation with the "prepareDataProvider()" method
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
 
         return $actions;

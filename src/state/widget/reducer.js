@@ -14,9 +14,9 @@ const reducer = (state = initialState, action) => {
         case FETCH_DATA: {
             return {
                 ...state,
-                widgetData: action.payload[0],
-                currentPage: action.payload[1],
-                pageCount: action.payload[2]
+                widgetData: action.payload.items,
+                currentPage: action.payload.currentPage,
+                pageCount: action.payload.pageCount
             }
         }
         case CHANGE_PAGE: {

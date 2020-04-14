@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "authors".
@@ -14,7 +15,7 @@ use Yii;
  *
  * @property Book[] $books
  */
-class Author extends \yii\db\ActiveRecord
+class Author extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -56,5 +57,10 @@ class Author extends \yii\db\ActiveRecord
     public function getBooks()
     {
         return $this->hasMany(Book::className(), ['author_id' => 'id']);
+    }
+
+    public function extraFields()
+    {
+        return ['books'];
     }
 }

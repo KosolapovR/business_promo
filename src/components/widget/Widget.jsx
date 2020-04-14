@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
         width: '300px',
         maxHeight: '393px',
         position: 'fixed',
+        zIndex: 100,
         bottom: 0,
         left: 0,
 
@@ -181,7 +182,7 @@ function Widget({page, pageCount, authors, fetchData, isFetching, deletedAuthor,
                                                     <Grid container justify='space-between'>
                                                         <Grid item xs={8}><Link
                                                             to={`/authors/${a.id}`}>{a.name}</Link></Grid>
-                                                        <Grid item xs={4}>{a.booksCount}</Grid>
+                                                        <Grid item xs={4}>{a.books.length}</Grid>
                                                     </Grid>
 
                                                 </ListItem>
